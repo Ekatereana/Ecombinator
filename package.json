@@ -1,8 +1,9 @@
 {
-  "name": "composer",
+  "name": "arch-accelerator",
   "version": "1.0.0",
   "description": "composer for cloud architecture",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -15,5 +16,15 @@
   "bugs": {
     "url": "https://gitlab.com/c8622/composer-package/issues"
   },
-  "homepage": "https://gitlab.com/c8622/composer-package#readme"
+  "homepage": "https://gitlab.com/c8622/composer-package#readme",
+  "keywords": [
+    "accelerator",
+    "IaC",
+    "shell",
+    "terraform",
+    "cloud"
+  ],
+  "dependencies": {
+    "shelljs": "^0.8.5"
+  }
 }
