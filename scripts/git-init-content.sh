@@ -9,7 +9,7 @@ cd ../
 
 mkdir -p "${temp_folder}"
 
-cd ./push-code
+cd "${temp_folder}"
 git init
 
 # clonning first config repo (terraform) and clear git history
@@ -32,5 +32,5 @@ git push "https://${github_access_token}@github.com/${github_username}/${generat
 
 cd ../
 
-rm -rf ./push-code
+rm -rf "${temp_folder}"
 
