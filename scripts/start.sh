@@ -11,4 +11,4 @@ done
 
 source ./scripts/env.sh
 ./scripts/github_workflow.sh
-# ./scripts/init_content.sh
+./scripts/init_content.sh

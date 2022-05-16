@@ -15,7 +15,7 @@ provider "github" {
 resource "github_repository" "created-by-app-dem" {
   name             = var.genereted_repo_name
   description      = "A demo GitHub repository created by Terraform"
-  visibility = "public"
+  visibility = "private"
 }
 
 
