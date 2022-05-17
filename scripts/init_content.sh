@@ -19,7 +19,7 @@ git pull "$workflow_remote" "${workflow_branch}"
 
 # clone the main-code-base repository
 git remote add -f "$function_remote" "$function"
-git merge "$function_remote" "${function_branch}" --allow-unrelated-histories
+git pull "$function_remote" "${function_branch}" --allow-unrelated-histories
 
 
 # commit new changes (merge histories)
