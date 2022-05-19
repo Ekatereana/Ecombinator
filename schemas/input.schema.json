@@ -1,0 +1,56 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "https://json-schema.org/draft/2020-12/schema",
+    "title": "Setting input for architecture composer",
+    "description": "Set of configurations for starter package and terraform",
+    "$vocabulary": {
+        "https://json-schema.org/draft/2020-12/vocab/core": true,
+        "https://json-schema.org/draft/2020-12/vocab/validation": true
+    },
+    "required": [
+        "repositoryName",
+        "projectName",
+        "environment",
+        "provider", 
+        "versionControl"],
+    "type": "object",
+    "properties": {
+        "repositoryName": {
+            "type": "string",
+            "description": "Name of repository to generate"
+
+        },
+        "projectName": {
+            "type": "string",
+            "description": "Name for generated project"
+        },
+       "environment": {
+           "type": "string",
+           "enum": ["dev", "test", "prod"],
+           "description": "type of environment to launch"
+       },
+        "provider": {
+            "type": "object",
+            "description": "provider-specific settings values",
+            "anyOf": [
+                {
+                    "description": "Azure configuration schema",
+                    "$ref": "./providers/azure.schema.json"
+
+                }
+            ]
+        },
+        "versionControl": {
+            "type": "object",
+            "description": "version-control specific setting values",
+            "anyOf": [
+                {
+                    "description": "GitHub configuration schema",
+                    "$ref": "./version.control/github.schema.json"
+
+                }
+            ]
+
+        }
+    }
+}

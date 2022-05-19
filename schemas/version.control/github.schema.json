@@ -1,0 +1,25 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "#githubSchema",
+    "title": "Configuration for github version control",
+    "description": "Set of configurations for integration of GitHub version control platform",
+    "$vocabulary": {
+        "https://json-schema.org/draft/2020-12/vocab/core": true,
+        "https://json-schema.org/draft/2020-12/vocab/validation": true
+    },
+    "required": [
+        "name",
+        "githubToken"
+    ],
+    "type": "object",
+    "properties": {
+        "name": {
+            "type": "string",
+            "enum": "github"
+        },
+        "githubToken": {
+            "type": "string",
+            "description": "pat token for github profile"
+        }
+    }
+}

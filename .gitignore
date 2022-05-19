@@ -1,3 +1,9 @@
+.vscode/
+
+# spesific of the app
+
+local.settings.json
+
 # Logs
 logs
 *.log

@@ -18,7 +18,6 @@ variable "cloud_provider" {
 # general configs for application 
 variable "project" {
   type = string
-  default = "templ"
   description = "Project name"
 }
 
@@ -32,7 +31,6 @@ variable "location" {
   type = string
   description = "cloud region to deploy module to"
 }
-
 
 # azure related variables 
 

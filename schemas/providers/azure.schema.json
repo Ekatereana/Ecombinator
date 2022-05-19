@@ -1,0 +1,46 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "#AzureSchema",
+    "title": "Configuration for azure provider",
+    "description": "Set of configurations for integration of Azure provider",
+    "$vocabulary": {
+        "https://json-schema.org/draft/2020-12/vocab/core": true,
+        "https://json-schema.org/draft/2020-12/vocab/validation": true
+    },
+    "required": [
+        "name",
+        "tenantId",
+        "clientId",
+        "subscriptionId",
+        "clientSecret",
+        "location"
+    ],
+    "type": "object",
+    "properties": {
+        "name": {
+            "type": "string",
+            "enum": ["azure"]
+        },
+        "tenantId": {
+            "type": "string",
+            "description": "id of the current active directory on azure portal"
+        },
+        "clientId": {
+            "type": "string",
+            "description": "id of the service principal application with admin rights"
+
+        },
+        "clientSecret": {
+            "type": "string",
+            "description": "client secret for azure service principal"
+        },
+        "subscriptionId": {
+            "type": "string",
+            "description": "id of the subscription on azure portal"
+        },
+        "location": {
+            "type": "string",
+            "description": "region for app to deploy"
+        }
+    }
+}
