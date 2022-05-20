@@ -1,31 +1,63 @@
-import json
 import sys
+import os
+
+import json
 import jsonschema
-from jsonschema import validate
 
-SCHEMA = '../schemas/input.schema.json'
+SCHEMAS = os.path.join(os.path.dirname(__file__), '..', 'schemas')
+INPUT = '/input.schema.json'
+
+def load_schemas_from_dir(dir, schemas):
+    """This function loads all schemas in one directory"""
+    for filename in os.listdir(dir):
+        with open(os.path.join(dir, filename), 'r') as f:
+            schemas.append(json.load(f))
+    return schemas
 
 
-def get_schema():
+def load_schema_variants(config, schemas):
+    "This function loads schemas for specific config"
+    return load_schemas_from_dir(config, schemas)
+
+
+def load_all_schemas(config_options):
     """This function loads the given schema available"""
-    with open(SCHEMA, 'r') as file:
-        schema = json.load(file)
-    return schema
+    ref_schemas = []
+
+    for config in config_options:
+        ref_schemas = load_schema_variants( os.path.join(SCHEMAS , config), ref_schemas)
+
+    with open(SCHEMAS + INPUT, 'r') as j:
+            main_schema = json.load(j)
+    
+    return main_schema, ref_schemas
+
+def build_refs(main, refs):
+    """This function builds dictionary of refs for jsonschema app"""
+    store = {
+        main.get('$id') : main,
+    }
+
+    for ref in refs:
+        store[ref.get('$id')] = ref
+
+    return store
 
 
-def validate(json_data):
-    """REF: https://json-schema.org/ """
+def validate_schema(json_data, config_options=["provider", "version.control"]):
     # load data schema
-    execute_api_schema = get_schema()
+    main, refs = load_all_schemas(config_options)
+    store = build_refs(main, refs)
 
     try:
-        validate(instance=json_data, schema=execute_api_schema)
+        resolver = jsonschema.RefResolver.from_schema(main, store=store)
+        jsonschema.validate(json_data, main, resolver=resolver)
     except jsonschema.exceptions.ValidationError as err:
         print(err)
         err = "Given JSON data is InValid"
         return False, err
-
     message = "Given JSON data is Valid"
     return True, message
 
-sys.modules[__name__] = validate
+
+sys.modules[__name__] = validate_schema

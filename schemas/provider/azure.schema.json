@@ -1,12 +1,8 @@
 {
-    "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "$id": "#AzureSchema",
+    "$schema": "https://json-schema.org/",
+    "$id": "/provider/azure.schema.json",
     "title": "Configuration for azure provider",
     "description": "Set of configurations for integration of Azure provider",
-    "$vocabulary": {
-        "https://json-schema.org/draft/2020-12/vocab/core": true,
-        "https://json-schema.org/draft/2020-12/vocab/validation": true
-    },
     "required": [
         "name",
         "tenantId",

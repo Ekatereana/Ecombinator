@@ -1,6 +1,6 @@
 {
-    "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "$id": "https://json-schema.org/draft/2020-12/schema",
+    "$schema": "https://json-schema.org/draft/",
+    "$id": "#",
     "title": "Setting input for architecture composer",
     "description": "Set of configurations for starter package and terraform",
     "$vocabulary": {
@@ -35,7 +35,7 @@
             "anyOf": [
                 {
                     "description": "Azure configuration schema",
-                    "$ref": "./providers/azure.schema.json"
+                    "$ref": "/provider/azure.schema.json"
 
                 }
             ]
@@ -46,7 +46,7 @@
             "anyOf": [
                 {
                     "description": "GitHub configuration schema",
-                    "$ref": "./version.control/github.schema.json"
+                    "$ref": "/version.control/github.schema.json"
 
                 }
             ]
