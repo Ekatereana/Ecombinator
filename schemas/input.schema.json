@@ -8,19 +8,19 @@
         "https://json-schema.org/draft/2020-12/vocab/validation": true
     },
     "required": [
-        "repositoryName",
-        "projectName",
+        "repository_name",
+        "project_name",
         "environment",
         "provider", 
-        "versionControl"],
+        "version_control"],
     "type": "object",
     "properties": {
-        "repositoryName": {
+        "repository_name": {
             "type": "string",
             "description": "Name of repository to generate"
 
         },
-        "projectName": {
+        "project_name": {
             "type": "string",
             "description": "Name for generated project"
         },
@@ -40,13 +40,13 @@
                 }
             ]
         },
-        "versionControl": {
+        "version_control": {
             "type": "object",
             "description": "version-control specific setting values",
             "anyOf": [
                 {
                     "description": "GitHub configuration schema",
-                    "$ref": "/version.control/github.schema.json"
+                    "$ref": "/version_control/github.schema.json"
 
                 }
             ]

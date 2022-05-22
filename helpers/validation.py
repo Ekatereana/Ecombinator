@@ -44,7 +44,7 @@ def build_refs(main, refs):
     return store
 
 
-def validate_schema(json_data, config_options=["provider", "version.control"]):
+def validate_schema(json_data, config_options):
     # load data schema
     main, refs = load_all_schemas(config_options)
     store = build_refs(main, refs)

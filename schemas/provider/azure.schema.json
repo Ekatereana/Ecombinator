@@ -4,33 +4,33 @@
     "title": "Configuration for azure provider",
     "description": "Set of configurations for integration of Azure provider",
     "required": [
-        "name",
-        "tenantId",
-        "clientId",
-        "subscriptionId",
-        "clientSecret",
+        "provider_type",
+        "tenant_id",
+        "client_id",
+        "subscription_id",
+        "client_secret",
         "location"
     ],
     "type": "object",
     "properties": {
-        "name": {
+        "provider_type": {
             "type": "string",
             "enum": ["azure"]
         },
-        "tenantId": {
+        "tenant_id": {
             "type": "string",
             "description": "id of the current active directory on azure portal"
         },
-        "clientId": {
+        "client_id": {
             "type": "string",
             "description": "id of the service principal application with admin rights"
 
         },
-        "clientSecret": {
+        "client_secret": {
             "type": "string",
             "description": "client secret for azure service principal"
         },
-        "subscriptionId": {
+        "subscription_id": {
             "type": "string",
             "description": "id of the subscription on azure portal"
         },
