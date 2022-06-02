@@ -1,0 +1,21 @@
+{
+    "$schema": "https://json-schema.org/",
+    "$id": "/provider/gcp.schema.json",
+    "title": "Configuration for GCP provider",
+    "description": "Set of configurations for integration of GCP provider",
+    "required": [
+        "provider_type",
+        "service_token"
+    ],
+    "type": "object",
+    "properties": {
+        "provider_type": {
+            "type": "string",
+            "enum": ["gcp"]
+        },
+        "service_token": {
+            "type": "string",
+            "description": "GCP service account key file content"
+        }
+    }
+}
