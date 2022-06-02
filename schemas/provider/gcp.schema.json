@@ -5,7 +5,10 @@
     "description": "Set of configurations for integration of GCP provider",
     "required": [
         "provider_type",
-        "service_token"
+        "service_token",
+        "project_id",
+        "region",
+        "zone"
     ],
     "type": "object",
     "properties": {
@@ -13,9 +16,21 @@
             "type": "string",
             "enum": ["gcp"]
         },
+        "project_id": {
+            "type": "string",
+            "description": "project identifier on GCP"
+        },
         "service_token": {
             "type": "string",
             "description": "GCP service account key file content"
+        },
+        "region": {
+            "type": "string",
+            "description": "GCP region to host the generated solution"
+        },
+        "zone": {
+            "type": "string",
+            "description": "GCP zone to host the generated solution"
         }
     }
 }

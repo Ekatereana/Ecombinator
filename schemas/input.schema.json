@@ -37,6 +37,11 @@
                     "description": "Azure configuration schema",
                     "$ref": "/provider/azure.schema.json"
 
+                },
+                {
+                    "description": "GCP configuration schema",
+                    "$ref": "/provider/gcp.schema.json"
+
                 }
             ]
         },

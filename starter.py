@@ -25,7 +25,8 @@ def shell_source(script, env):
     pipe = subprocess.Popen(". %s; env" %
                             script, stdout=subprocess.PIPE, shell=True, env=env)
     output = pipe.communicate()[0].decode('utf-8')
-    env = dict((line.split("=", 1) for line in output.splitlines()))
+    print(output)
+    env = dict(line.split("=", 1) for line in output.splitlines())
     os.environ.update(env)
     return os.environ.copy()
 
@@ -43,10 +44,15 @@ def init_environment(settings):
 
 
 def run_repository_init(composed_env):
-    subprocess.run(['./scripts/version_control/' +
-                    os.getenv('version_control_type') + '.sh'],
-                   shell=True,
-                   env=composed_env)
+    subprocess.run([
+            './scripts/version_control/' +
+            os.getenv('version_control_type') +
+            '/' +
+            os.getenv('provider_type') +
+            '.sh'
+        ],
+        shell=True,
+        env=composed_env)
 
 
 def run_code_composing(composed_env):
@@ -63,7 +69,7 @@ def run():
         if (isValid):
                 env = init_environment(settings)
                 run_repository_init(env)
-                run_code_composing(env)
+                # run_code_composing(env)
 
 
 if __name__ == "__main__":
