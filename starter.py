@@ -13,7 +13,7 @@ import process_cmd_args
 
 
 
-DEFAULT_CONFIGS = ['provider', 'version_control']
+DEFAULT_CONFIGS = ['provider', 'version_control', 'app']
 
 
 def pass_validation(settings):
@@ -69,7 +69,7 @@ def run():
         if (isValid):
                 env = init_environment(settings)
                 run_repository_init(env)
-                # run_code_composing(env)
+                run_code_composing(env)
 
 
 if __name__ == "__main__":

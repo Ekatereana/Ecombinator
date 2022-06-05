@@ -1,16 +1,3 @@
-terraform {
-  required_providers {
-    github = {
-      source  = "integrations/github"
-      version = "~> 4.0"
-    }
-  }
-}
-
-provider "github" {
-  token = var.github_token
-}
-
 resource "github_repository" "created-by-app-dem-s1" {
   name             = var.genereted_repo_name
   description      = "A demo GitHub repository created by Terraform"
@@ -35,6 +22,7 @@ resource "github_actions_secret" "azure_secrets" {
 resource "github_actions_secret" "gcp_secrets" {
   for_each = var.cloud_provider == "gcp" ? {
     service_token: var.service_token
+    service_account_name: var.service_account_name
     project_id: var.project_id
     project_name: var.project_name
     region: var.region

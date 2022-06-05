@@ -6,9 +6,9 @@
     "required": [
         "provider_type",
         "service_token",
+        "service_account_name",
         "project_id",
-        "region",
-        "zone"
+        "region"
     ],
     "type": "object",
     "properties": {
@@ -23,6 +23,10 @@
         "service_token": {
             "type": "string",
             "description": "GCP service account key file content"
+        },
+        "service_account_name": {
+            "type": "string",
+            "description": "GCP service account name"
         },
         "region": {
             "type": "string",

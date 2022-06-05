@@ -56,6 +56,16 @@
                 }
             ]
 
+        },
+        "app": {
+            "type": "object",
+            "description": "application template settings",
+            "anyOf": [
+                {
+                    "description": "Template for static landing pages",
+                    "$ref": "/app/static.schema.json"
+                }
+            ]
         }
     }
 }

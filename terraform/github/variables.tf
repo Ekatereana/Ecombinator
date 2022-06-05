@@ -72,6 +72,13 @@ variable "service_token" {
     default = ""
 }
 
+variable "service_account_name" {
+    type = string
+    description = "GCP service account name"
+    sensitive = true
+    default = ""
+}
+
 variable "project_id" {
     type = string
     description = "Project id on GCP"
