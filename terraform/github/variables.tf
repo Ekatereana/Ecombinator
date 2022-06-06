@@ -12,6 +12,7 @@ variable "genereted_repo_name" {
 variable "cloud_provider" {
   type = string
   description = "Name of could provider that will host client's solution"
+  default = "azure"
   
 }
 
@@ -26,6 +27,7 @@ variable "environment" {
   default = "dev"
   description = "Environment (dev / stage / prod)"
 }
+
 
 # azure related variables 
 

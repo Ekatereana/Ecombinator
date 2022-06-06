@@ -11,9 +11,6 @@ import validation
 import process_config
 
 
-
-
-
 DEFAULT_CONFIGS = ['provider', 'version_control', 'app']
 
 

@@ -3,10 +3,10 @@
 
 # PROJECT RELATED 
 # spesific of the app
-
 *.local.settings.json
 local-settings.sh
 key.json
+
 
 # TERRAFORM
 
@@ -26,7 +26,10 @@ key.json
 # control as they are data points which are potentially sensitive and subject 
 # to change depending on the environment.
 */*.tfvars
+<<<<<<< HEAD
 **/*/*.tfvars
+=======
+>>>>>>> 6216127590482e12503a944bde57b43b6416a001
 */*.tfvars.json
 
 # Ignore override files as they are usually used to override resources locally and so
@@ -199,5 +202,9 @@ dmypy.json
 .pytype/
 
 # Cython debug symbols
+<<<<<<< HEAD
 cython_debug/
 
+=======
+cython_debug/
+>>>>>>> 6216127590482e12503a944bde57b43b6416a001

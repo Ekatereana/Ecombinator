@@ -5,6 +5,7 @@ resource "github_repository" "created-by-app-dem-s1" {
 }
 
 resource "github_actions_secret" "azure_secrets" {
+
   for_each = var.cloud_provider == "azure" ? {
     tenant_id: var.tenant_id
     subscription_id: var.subscription_id
@@ -32,3 +33,4 @@ resource "github_actions_secret" "gcp_secrets" {
   secret_name      = each.key
   plaintext_value  = each.value
 }
+
