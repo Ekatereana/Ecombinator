@@ -1,3 +1,6 @@
+import process_cmd_args
+import validation
+import process_config
 import os
 import sys
 import subprocess
@@ -6,18 +9,12 @@ import json
 sys.path.insert(1, os.path.join(os.path.dirname(__file__), 'helpers'))
 sys.path.insert(1, os.path.join(os.path.dirname(__file__), 'scripts'))
 
-import process_settings
-import validation
-import process_cmd_args
-
-
-
 
 DEFAULT_CONFIGS = ['provider', 'version_control', 'app']
 
 
-def pass_validation(settings):
-    return validation(settings, DEFAULT_CONFIGS)
+def pass_validation(config):
+    return validation(config, DEFAULT_CONFIGS)
 
 
 def shell_source(script, env):
@@ -30,12 +27,12 @@ def shell_source(script, env):
     return os.environ.copy()
 
 
-def init_environment(settings):
+def init_environment(config):
     # add public keys to env
     subprocess.run(
         ['./scripts/init.sh'],
         shell=True)
-    configured_env = process_settings.config_to_env(settings, DEFAULT_CONFIGS)
+    configured_env = process_config.config_to_env(config, DEFAULT_CONFIGS)
     configured_env["PATH"] = "/usr/sbin:/sbin:" + configured_env["PATH"]
     expanded_env = shell_source('./scripts/public.env', configured_env)
 
@@ -43,7 +40,8 @@ def init_environment(settings):
 
 
 def run_repository_init(composed_env):
-    subprocess.run([
+    subprocess.run(
+        [
             './scripts/version_control/' +
             os.getenv('version_control_type') +
             '/' +
@@ -53,50 +51,59 @@ def run_repository_init(composed_env):
         shell=True,
         env=composed_env)
 
-def revoke_resources(composed_env):
-    subprocess.run(['./scripts/revoke.sh'], 
-    shell=True,
-    env=composed_env)
 
 def run_code_composing(composed_env):
-    subprocess.run([
-        './scripts/init_content/' + 
-        os.getenv('app_type') +
-        '.sh'],
+    subprocess.run(
+        [
+            './scripts/init_content/' +
+            os.getenv('app_type') +
+            '.sh'
+        ],
         shell=True,
         env=composed_env)
 
-def parse_env_settings_file(filename):
+
+def read_env_config(filename):
     with open(filename, 'r') as file:
-       settings = json.load(file)
-       isValid, message = pass_validation(settings)
-       print(message) if not isValid else ''
+        config = json.load(file)
+        isValid, message = pass_validation(config)
+        return isValid, config
 
-       if (isValid):
-            env = init_environment(settings)
-       
-       return isValid
 
-def generate_project():
-    
+def parse_env_config_file(filename):
+    isValid, config = read_env_config(filename)
+    if (isValid):
+        env = init_environment(config)
+        return env
+    else:
+        raise Exception('Incorrect json config')
 
-       
-                run_repository_init(env)
-                run_code_composing(env)
+
+def generate_project(config):
+    env = parse_env_config_file(config)
+    run_repository_init(env)
+    run_code_composing(env)
+
+
+def revoke_resources(config):
+    env = parse_env_config_file(config)
+    subprocess.run(
+        ['./scripts/revoke.sh'],
+        shell=True,
+        env=env)
 
 
 def run(args):
-    if args.revoke: 
-        run
-    generate_project
-
-
-   
+    if args.revoke:
+        revoke_resources(args.config)
+    else:
+        generate_project(args.config)
 
 
 if __name__ == "__main__":
-        process_cmd_args(sys.argv)
-        args = {
-            "revoke": False
-        }
-        run(args)
+    # process_cmd_args(sys.argv)
+    args = {
+        "revoke": False,
+        "config": "./v2.local.config.json"
+    }
+    run(args)
