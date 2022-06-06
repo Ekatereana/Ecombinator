@@ -1,7 +1,5 @@
-#/bin/bash
 cd ./terraform/github/
 
-terraform init
 # general \ version contol \ provider
 TF_VAR_cloud_provider="${provider_type}"  \
 TF_VAR_environment="${environment}" \
@@ -12,7 +10,6 @@ TF_VAR_project_id="${project_id}" \
 TF_VAR_service_token="${service_token}"\
 TF_VAR_service_account_name="${service_account_name}"\
 TF_VAR_region="${region}" \
-TF_VAR_zone="${zone}" \
-terraform apply -auto-approve
+TF_VAR_zone="${zone}" terraform destroy
 
 cd ../../
