@@ -25,7 +25,6 @@ def shell_source(script, env):
     pipe = subprocess.Popen(". %s; env" %
                             script, stdout=subprocess.PIPE, shell=True, env=env)
     output = pipe.communicate()[0].decode('utf-8')
-    print(output)
     env = dict(line.split("=", 1) for line in output.splitlines())
     os.environ.update(env)
     return os.environ.copy()
@@ -54,24 +53,50 @@ def run_repository_init(composed_env):
         shell=True,
         env=composed_env)
 
+def revoke_resources(composed_env):
+    subprocess.run(['./scripts/revoke.sh'], 
+    shell=True,
+    env=composed_env)
 
 def run_code_composing(composed_env):
-    subprocess.run(['./scripts/init_content.sh'],
-                   shell=True,
-                   env=composed_env)
+    subprocess.run([
+        './scripts/init_content/' + 
+        os.getenv('app_type') +
+        '.sh'],
+        shell=True,
+        env=composed_env)
 
+def parse_env_settings_file(filename):
+    with open(filename, 'r') as file:
+       settings = json.load(file)
+       isValid, message = pass_validation(settings)
+       print(message) if not isValid else ''
 
-def run():
-    with open('./v2.local.settings.json', 'r') as file:
-        settings = json.load(file)
-        isValid, message = pass_validation(settings)
-        print(message)
-        if (isValid):
-                env = init_environment(settings)
+       if (isValid):
+            env = init_environment(settings)
+       
+       return isValid
+
+def generate_project():
+    
+
+       
                 run_repository_init(env)
                 run_code_composing(env)
 
 
+def run(args):
+    if args.revoke: 
+        run
+    generate_project
+
+
+   
+
+
 if __name__ == "__main__":
         process_cmd_args(sys.argv)
-        run()
+        args = {
+            "revoke": False
+        }
+        run(args)

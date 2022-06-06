@@ -12,7 +12,9 @@
         "project_name",
         "environment",
         "provider", 
-        "version_control"],
+        "version_control",
+        "app"
+    ],
     "type": "object",
     "properties": {
         "repository_name": {

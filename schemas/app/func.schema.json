@@ -1,8 +1,8 @@
 {
     "$schema": "https://json-schema.org/draft/",
-    "$id": "/app/static.schema.json",
+    "$id": "/app/func.schema.json",
     "title": "Configuration for github version control",
-    "description": "Set of configurations to define templates for landing pages",
+    "description": "Set of configurations to define functional apps templates",
     "$vocabulary": {
         "https://json-schema.org/draft/2020-12/vocab/core": true,
         "https://json-schema.org/draft/2020-12/vocab/validation": true
@@ -15,12 +15,12 @@
     "properties": {
         "app_type": {
             "type": "string",
-            "enum": ["static"]
+            "enum": ["func"]
         },
         "template": {
             "type": "string",
-            "description": "names of available landing page templates",
-            "enum": ["knight"]
+            "description": "names of available functional apps templates",
+            "enum": ["http-trigger"]
         }
     }
 }
