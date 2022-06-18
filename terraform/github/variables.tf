@@ -98,3 +98,11 @@ variable "zone" {
     description = "GCP zone to host the generated solution"
     default = ""
 }
+
+# templates variables
+
+variable "template" {
+  type = string
+  description = "Code template name"
+  default = ""
+}

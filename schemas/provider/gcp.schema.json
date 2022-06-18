@@ -1,6 +1,6 @@
 {
     "$schema": "https://json-schema.org/",
-    "$id": "/provider/gcp.schema.json",
+    "$id": "./provider/gcp.schema.json",
     "title": "Configuration for GCP provider",
     "description": "Set of configurations for integration of GCP provider",
     "required": [
@@ -23,6 +23,12 @@
         "service_token": {
             "type": "string",
             "description": "GCP service account key file content"
+        },
+        "service_token_type": {
+            "type": "string",
+            "default": "file",
+            "enum": ["content", "file"],
+            "description": "Type of storing service token config (as field or separate file)"
         },
         "service_account_name": {
             "type": "string",

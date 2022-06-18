@@ -1,6 +1,6 @@
 {
     "$schema": "https://json-schema.org/draft/",
-    "$id": "/app/static.schema.json",
+    "$id": "./app/static.schema.json",
     "title": "Configuration for github version control",
     "description": "Set of configurations to define templates for landing pages",
     "$vocabulary": {

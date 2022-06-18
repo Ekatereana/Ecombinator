@@ -14,6 +14,7 @@ resource "github_actions_secret" "azure_secrets" {
     project: var.project_name
     environment: var.environment
     location: var.location
+    template: var.template
     } : {}
   repository       = github_repository.created-by-app-dem-s1.name
   secret_name      = each.key
@@ -28,6 +29,7 @@ resource "github_actions_secret" "gcp_secrets" {
     project_name: var.project_name
     region: var.region
     zone: var.zone
+    template: var.template
     } : {}
   repository       = github_repository.created-by-app-dem-s1.name
   secret_name      = each.key

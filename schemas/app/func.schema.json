@@ -1,6 +1,6 @@
 {
     "$schema": "https://json-schema.org/draft/",
-    "$id": "/app/func.schema.json",
+    "$id": "./app/func.schema.json",
     "title": "Configuration for github version control",
     "description": "Set of configurations to define functional apps templates",
     "$vocabulary": {

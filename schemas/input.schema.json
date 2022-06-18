@@ -37,12 +37,12 @@
             "anyOf": [
                 {
                     "description": "Azure configuration schema",
-                    "$ref": "/provider/azure.schema.json"
+                    "$ref": "./provider/azure.schema.json"
 
                 },
                 {
                     "description": "GCP configuration schema",
-                    "$ref": "/provider/gcp.schema.json"
+                    "$ref": "./provider/gcp.schema.json"
 
                 }
             ]
@@ -53,7 +53,7 @@
             "anyOf": [
                 {
                     "description": "GitHub configuration schema",
-                    "$ref": "/version_control/github.schema.json"
+                    "$ref": "./version_control/github.schema.json"
 
                 }
             ]
@@ -65,7 +65,7 @@
             "anyOf": [
                 {
                     "description": "Template for static landing pages",
-                    "$ref": "/app/static.schema.json"
+                    "$ref": "./app/static.schema.json"
                 }
             ]
         }
