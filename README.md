@@ -44,4 +44,4 @@ With commerce composer you can create, and delete could resources and repositori
 
 # Contribution
 
-Check details of contribution process [here](./guidelines/contribution.md)
+Check details of contribution process [here](./guidelines/CONTRIBUTING.md))
