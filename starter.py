@@ -1,3 +1,6 @@
+# starter .py
+
+from distutils.command.config import config
 import os
 import sys
 import subprocess
@@ -6,9 +9,10 @@ import json
 sys.path.insert(1, os.path.join(os.path.dirname(__file__), 'helpers'))
 sys.path.insert(1, os.path.join(os.path.dirname(__file__), 'scripts'))
 
-import process_cmd_args
-import validation
 import process_config
+import validation
+import process_cmd_args
+import docs_generator
 
 
 DEFAULT_CONFIGS = ['provider', 'version_control', 'app']
@@ -27,6 +31,7 @@ def shell_source(script, env):
     os.environ.update(env)
     return os.environ.copy()
 
+
 def sev_shell_sources(scripts, env):
     for script in scripts:
         env = shell_source(script, env)
@@ -43,7 +48,7 @@ def init_environment(config):
     expanded_env = sev_shell_sources(
         [
             './scripts/public.env'
-        ], 
+        ],
         configured_env)
     return expanded_env
 
@@ -88,7 +93,7 @@ def parse_env_config_file(filename):
         raise Exception('Incorrect json config')
 
 
-def generate_project(config):
+def generate_resources(config):
     env = parse_env_config_file(config)
     run_repository_init(env)
     run_code_composing(env)
@@ -107,12 +112,25 @@ def revoke_resources(config):
         shell=True,
         env=env)
 
+def generate_documentation(args):
+    docs_generator()
 
-def run(args):
+def run_resources(args):
     if args.revoke:
         revoke_resources(args.config[0])
     else:
-        generate_project(args.config[0])
+        generate_resources(args.config[0])
+
+def run_documentation(args):
+    generate_documentation(args)
+
+
+def run(args):
+    if args.config:
+        run_resources(args)
+    elif args.docs:
+        run_documentation(args)
+ 
 
 
 if __name__ == "__main__":
