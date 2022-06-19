@@ -32,7 +32,7 @@ such as landing pages, function app etc.
 
 With commerce composer you can create, and delete could resources and repositories in one click
 
-- Check the documentation on settings [here](./docs/index.html)
+- Check the documentation on settings [here](https://ekatereana.github.io/Ecombinator/)
 - Check [settings examples folder](./examples/settings/)
 ### Available cloud providers
 - Google Cloud Platform 
