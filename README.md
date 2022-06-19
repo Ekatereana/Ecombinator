@@ -7,7 +7,7 @@
  \___|\___\___/|_| |_| |_|_.__/|_|_| |_|\__,_|\__\___/|_|   
                                                             
 
-CLI tool for composing commerce infrastructures in one click
+CLI tool for composing commerce infrastructures in one cl
 
 
 # Getting started 
