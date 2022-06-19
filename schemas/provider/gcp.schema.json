@@ -1,0 +1,46 @@
+{
+    "$schema": "https://json-schema.org/",
+    "$id": "./provider/gcp.schema.json",
+    "title": "Configuration for GCP provider",
+    "description": "Set of configurations for integration of GCP provider",
+    "required": [
+        "provider_type",
+        "service_token",
+        "service_account_name",
+        "project_id",
+        "region"
+    ],
+    "type": "object",
+    "properties": {
+        "provider_type": {
+            "type": "string",
+            "enum": ["gcp"]
+        },
+        "project_id": {
+            "type": "string",
+            "description": "project identifier on GCP"
+        },
+        "service_token": {
+            "type": "string",
+            "description": "GCP service account key file content"
+        },
+        "service_token_type": {
+            "type": "string",
+            "default": "file",
+            "enum": ["content", "file"],
+            "description": "Type of storing service token config (as field or separate file)"
+        },
+        "service_account_name": {
+            "type": "string",
+            "description": "GCP service account name"
+        },
+        "region": {
+            "type": "string",
+            "description": "GCP region to host the generated solution"
+        },
+        "zone": {
+            "type": "string",
+            "description": "GCP zone to host the generated solution"
+        }
+    }
+}
