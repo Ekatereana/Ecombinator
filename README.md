@@ -1,13 +1,14 @@
 # Commerce Composer Package
-
+```
                           _     _             _             
   ___  ___ ___  _ __ ___ | |__ (_)_ __   __ _| |_ ___  _ __ 
  / _ \/ __/ _ \| '_ ` _ \| '_ \| | '_ \ / _` | __/ _ \| '__|
 |  __/ (_| (_) | | | | | | |_) | | | | | (_| | || (_) | |   
  \___|\___\___/|_| |_| |_|_.__/|_|_| |_|\__,_|\__\___/|_|   
-                                                            
 
-CLI tool for composing commerce infrastructures in one cl
+```   
+
+CLI tool for composing commerce infrastructures in one click
 
 
 # Getting started 
@@ -31,8 +32,8 @@ such as landing pages, function app etc.
 
 With commerce composer you can create, and delete could resources and repositories in one click
 
-Check the documentation [here](./docs/index.html)
-
+- Check the documentation on settings [here](./docs/index.html)
+- Check [settings examples folder](./examples/settings/)
 ### Available cloud providers
 - Google Cloud Platform 
 - Microsoft Azure

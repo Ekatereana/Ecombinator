@@ -1,0 +1,25 @@
+{
+    "project_name": "grizik1",
+    "repository_name": "generated-by-terraform-s1",
+    "environment": "dev",
+    "provider": {
+      "provider_type": "gcp",
+      "project_id": "**********************************",
+      "service_token": "./key.json",
+      "service_token_type": "file",
+      "service_account_name": "*****************************************",
+      "region": "us-central1",
+      "zone": "us-central1-c"
+    },
+    "version_control": {
+      "version_control_type": "github",
+      "github_username": "Ekatereana",
+      "github_user_email": "************************************************",
+      "github_access_token": "*********************************************"
+    },
+    "app": {
+      "app_type": "static",
+      "template": "knight"
+    }
+  }
+  

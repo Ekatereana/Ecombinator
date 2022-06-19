@@ -1,0 +1,22 @@
+{
+    "project_name": "grizik1",
+    "repository_name": "generated-by-terraform-s1",
+    "environment": "dev",
+    "provider": {
+        "provider_type": "azure",
+        "tenant_id": "***********************************",
+        "client_id": "************************************",
+        "client_secret": "*********************************",
+        "subscription_id": "********************************",
+        "location": "West Europe"
+    },
+    "version_control": {
+        "version_control_type": "github",
+        "github_username": "Ekatereana",
+        "github_user_email": "************************************",
+        "github_access_token": "**********************************"
+    },
+    "template": {
+        "template_type": "httpTrigger"
+    }
+}
